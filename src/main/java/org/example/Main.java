@@ -25,7 +25,7 @@ public class Main {
         Teacher teacher3 = teacher2.withId("test-id634");
         System.out.println("Teacher3: " + teacher3);
 
-        Course javaCourseEmpty = new Course();
+        //Course javaCourseEmpty = new Course(); => not running since using of @Value
         Course javaCourseFilled = new Course("test-course-id-2", "Java", teacher1, new HashMap<String, Student>() {{
             put(student.getId(), student);
             put(student2.getId(), student2);
@@ -43,7 +43,7 @@ public class Main {
         System.out.println("-------------------java course with builder------------");
         System.out.println("JavaCourseBuilder: " + javaCourseBuilder);
         System.out.println("-------------------java course without builder------------");
-        System.out.println("Empty course: " + javaCourseEmpty);
+        //System.out.println("Empty course: " + javaCourseEmpty);
         System.out.println("Filled course: " + javaCourseFilled);
 
     }
