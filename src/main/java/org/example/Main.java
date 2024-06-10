@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
         Student student = new Student();
@@ -22,6 +24,27 @@ public class Main {
         System.out.println("-------------------teacher wither------------");
         Teacher teacher3 = teacher2.withId("test-id634");
         System.out.println("Teacher3: " + teacher3);
+
+        Course javaCourseEmpty = new Course();
+        Course javaCourseFilled = new Course("test-course-id-2", "Java", teacher1, new HashMap<String, Student>() {{
+            put(student.getId(), student);
+            put(student2.getId(), student2);
+        }});
+        Course javaCourseBuilder = Course.builder()
+                .id("course-id-1")
+                .name("Java")
+                .teacher(teacher1)
+                .students(new HashMap<>() {{
+                    put(student.getId(), student);
+                    put(student2.getId(), student2);
+                    put("test-id3874", new Student());
+                }})
+                .build();
+        System.out.println("-------------------java course with builder------------");
+        System.out.println("JavaCourseBuilder: " + javaCourseBuilder);
+        System.out.println("-------------------java course without builder------------");
+        System.out.println("Empty course: " + javaCourseEmpty);
+        System.out.println("Filled course: " + javaCourseFilled);
 
     }
 }
